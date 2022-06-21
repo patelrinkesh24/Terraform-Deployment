@@ -6,7 +6,7 @@ Create a Terraform configuration that deploys 2 VPCs that are simulating preprod
 Terraform configuration is be modular and should support environment-specific deployment.
 
 
-<image![deployment diagram](https://user-images.githubusercontent.com/50281621/174695866-a2380fc3-6283-4177-bee4-9318ccc9f956.png)
+![deployment diagram](https://user-images.githubusercontent.com/50281621/174695866-a2380fc3-6283-4177-bee4-9318ccc9f956.png)
 
 
 Diagram explained:
