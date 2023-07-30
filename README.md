@@ -1,7 +1,7 @@
 # Assignment 2: Terraform Infrastructure Deployment
 
 ## Introduction
-This repository contains the Terraform code to deploy multi-environment infrastructure as part of Assignment 2. The objective of this project is to demonstrate our skills in applying Terraform to create two VPCs representing preproduction and production environments. The VPCs are connected via peering, and EC2 instances are deployed within each environment.
+This repository contains the Terraform code to deploy multi-environment infrastructure as part of Assignment 2. The objective of this project is to demonstrate my skills in applying Terraform to create two VPCs representing preproduction and production environments. The VPCs are connected via peering, and EC2 instances are deployed within each environment.
 
 ## Architecture
 ![deployment diagram](https://user-images.githubusercontent.com/50281621/174695866-a2380fc3-6283-4177-bee4-9318ccc9f956.png)
