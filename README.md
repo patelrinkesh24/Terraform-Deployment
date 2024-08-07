@@ -1,41 +1,103 @@
-# Assignment 2: Terraform Infrastructure Deployment
+# Terraform Deployment Project
 
-## Introduction
-This repository contains the Terraform code to deploy multi-environment infrastructure as part of Assignment 2. The objective of this project is to demonstrate my skills in applying Terraform to create two VPCs representing preproduction and production environments. The VPCs are connected via peering, and EC2 instances are deployed within each environment.
+## About
 
-## Architecture
+This repository demonstrates the deployment of infrastructure using Terraform. The project automates the provisioning of cloud resources, ensuring efficient and scalable infrastructure management. This project is built to illustrate proficiency in Infrastructure as Code (IaC) principles, cloud infrastructure management, and Terraform scripting.
+
 ![deployment diagram](https://user-images.githubusercontent.com/50281621/174695866-a2380fc3-6283-4177-bee4-9318ccc9f956.png)
 
-The architecture consists of the following components:
-- VPC nonprod with 2 private and 2 public subnets. Bastion host and NAT gateway are deployed into public subnets, while VM1 and VM2 run Apache webservers in private subnets.
-- VPC prod with 2 private subnets. VM1 and VM2 are deployed in private subnets.
-- VPC prod and VPC nonprod are connected via VPC peering.
-- Admins can connect to the bastion host via SSH and from there, to VMs in both VPCs. Admins can also send HTTP requests to Apache webservers on VM1 and VM2 in the nonprod VPC.
+## Table of Contents
 
-## Prerequisites
-Before deploying the infrastructure, ensure you have the following prerequisites in place:
-- An AWS account with appropriate permissions to create VPCs, subnets, EC2 instances, security groups, and VPC peering connections.
-- Terraform CLI installed on your local machine.
-- An S3 bucket to store the Terraform state. Modify the `main.tf` file to set the correct backend configuration for state storage.
+- [Project Overview](#project-overview)
+- [Features](#features)
+- [Architecture](#architecture)
+- [Getting Started](#getting-started)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Project Structure](#project-structure)
+- [Contributing](#contributing)
 
-## Deployment Steps
-1. Clone this repository to your local machine.
-2. Set up the Terraform backend configuration in the `main.tf` file to use your S3 bucket for state storage.
-3. Initialize Terraform by running `terraform init`.
-4. Apply the Terraform configuration to create the infrastructure by running `terraform apply`. Enter 'yes' when prompted to confirm the changes.
+## Project Overview
 
-## Network Connectivity
-- To access the bastion host and connect to VMs in nonprod VPC:
-  - Use SSH to connect to the bastion host via the `ec2-user` user.
-  - From the bastion host, you can SSH to VM1 and VM2 in nonprod VPC via the `ec2-user` user.
-- To access VMs in prod VPC:
-  - Connect to the bastion host via SSH as described above.
-  - From the bastion host, you can SSH to VM1 and VM2 in prod VPC via the `ec2-user` user.
+This project is a comprehensive demonstration of how Terraform can be used to automate cloud infrastructure deployment. The repository contains Terraform scripts and configuration files to create and manage cloud resources in a repeatable and consistent manner. 
 
-## Cleanup
-After completing the assignment and demonstration, follow these steps to clean up the deployed infrastructure:
-1. Run `terraform destroy` to remove all created resources.
-2. Confirm the destruction by entering 'yes' when prompted.
+## Features
 
-## Conclusion
-This project demonstrates the effective use of Terraform to deploy multi-environment infrastructure. The modularized and parameterized Terraform configuration allows for repeatable and reliable deployments of VPCs, subnets, and EC2 instances. The use of remote state and correct naming conventions ensures a well-organized and secure infrastructure deployment.
+- **Infrastructure as Code (IaC)**: Manage infrastructure through code for consistency and repeatability.
+- **Scalability**: Easily scale infrastructure resources up or down as needed.
+- **Modular Structure**: Organized into reusable modules for better management.
+- **Cloud Agnostic**: Easily adaptable for various cloud providers.
+
+## Architecture
+
+This project leverages Terraform to define and manage the following infrastructure components:
+
+- **Compute Resources**: Virtual machines, load balancers, etc.
+- **Networking**: VPCs, subnets, security groups, etc.
+- **Storage**: S3 buckets, RDS databases, etc.
+
+
+
+## Getting Started
+
+### Prerequisites
+
+- **Terraform**: Ensure that Terraform is installed on your system.
+- **Cloud Provider Account**: You will need an account with your chosen cloud provider (AWS, Azure, GCP, etc.).
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/patelrinkesh24/Terraform-Deployment.git
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd Terraform-Deployment
+   ```
+
+### Usage
+
+1. Initialize Terraform:
+   ```bash
+   terraform init
+   ```
+2. Review the plan:
+   ```bash
+   terraform plan
+   ```
+3. Apply the configuration:
+   ```bash
+   terraform apply
+   ```
+
+### Project Structure
+
+```
+Terraform-Deployment/
+│
+├── modules/                   # Reusable Terraform modules
+│   ├── compute/               # Compute resources (EC2, VMs)
+│   ├── networking/            # Networking components (VPC, subnets)
+│   ├── storage/               # Storage services (S3, RDS)
+│
+├── environments/              # Environment-specific configurations (dev, prod)
+│   ├── dev/                   # Development environment
+│   ├── prod/                  # Production environment
+│
+├── main.tf                    # Main Terraform configuration file
+├── variables.tf               # Variable definitions
+├── outputs.tf                 # Output definitions
+└── README.md                  # Project documentation
+```
+
+### Contributing
+
+Contributions are welcome! Please open an issue or submit a pull request for any changes or improvements.
+
+
+
+
+
+
